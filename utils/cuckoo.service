@@ -1,0 +1,7 @@
+
+#!/bin/bash
+# /etc/init.d/cuckoo
+cd /opt/cuckoo3
+source /opt/cuckoo3/venv/bin/activate
+# nohup cuckoo 2>&1 &
+cuckoo

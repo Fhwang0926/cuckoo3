@@ -4,7 +4,7 @@
 
 start() {
   stop
-  sudo -u cuckoo --workdir /opt/cuckoo3 nohup bash -c 'source /opt/cuckoo3/venv/bin/activate && cuckoo' 2>&1 &
+  sudo -u cuckoo nohup /opt/cuckoo3/utils/cuckoo.service 2>&1 &
   echo $! > /tmp/cuckoo.pid && cat /tmp/cuckoo.pid
 }
 
@@ -37,7 +37,7 @@ status() {
   else
     echo -e "\033[0;31mcuckoo is not running"
   fi
-  echo -e "\033[0m;"
+  echo -e "\033[0m"
 }
 
 restart() {
