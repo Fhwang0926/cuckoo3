@@ -1,11 +1,11 @@
-
 #!/bin/bash
 # /etc/init.d/cuckoo
+# chmod 755 /etc/init.d/cuckoo.service
 
 start() {
   stop
   # nohup bash -c /opt/cuckoo3.1/utils/cuckoo.service
-  bash -c "sudo -u cuckoo /opt/cuckoo3.1/utils/cuckoo.service 2>&1 &"
+  bash -c "nohup sudo -u cuckoo /opt/cuckoo3.1/utils/cuckoo.service 2>&1 &"
   echo $! > /tmp/cuckoo.pid && cat /tmp/cuckoo.pid
 }
 
