@@ -4,7 +4,8 @@
 
 start() {
   stop
-  nohup bash /opt/cuckoo3.1/utils/cuckoo.service 2>&1 &
+  # nohup bash -c /opt/cuckoo3.1/utils/cuckoo.service
+  nohup exec bash -c /opt/cuckoo3.1/utils/cuckoo.service 2>&1 &
   echo $! > /tmp/cuckoo.pid && cat /tmp/cuckoo.pid
 }
 
@@ -19,12 +20,14 @@ stop() {
       echo "stopped..."
       sleep 5
       rm -rf /home/cuckoo/.cuckoocwd/operational/sockets/*.socket
+      rm -rf /home/cuckoo/.cuckoocwd/operational/sockets/*.sock
       echo "removed socket"
     else
       # 프로세스 ID가 존재하지만 프로세스가 실행 중이지 않은 경우
       echo "PID file exists but Cuckoo is not running. Cleaning up..."
       rm /tmp/cuckoo.pid
       rm -rf /home/cuckoo/.cuckoocwd/operational/sockets/*.socket
+      rm -rf /home/cuckoo/.cuckoocwd/operational/sockets/*.sock
       echo "removed socket"
     fi
   fi

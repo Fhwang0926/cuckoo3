@@ -1,7 +1,6 @@
-
 #!/bin/bash
-# /etc/init.d/cuckoo
+
 cd /opt/cuckoo3
-source /opt/cuckoo3/venv/bin/activate
+source /opt/cuckoo3.1/venv/bin/activate
 # nohup cuckoo 2>&1 &
 sudo -u cuckoo cuckoo
