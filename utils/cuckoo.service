@@ -1,5 +1,4 @@
 #!/bin/bash
-
 cd /opt/cuckoo3.1
 source /opt/cuckoo3.1/venv/bin/activate
-sudo -E -i -u cuckoo cuckoo
+cuckoo

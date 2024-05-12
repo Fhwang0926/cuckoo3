@@ -5,7 +5,7 @@
 start() {
   stop
   # nohup bash -c /opt/cuckoo3.1/utils/cuckoo.service
-  bash -c "/opt/cuckoo3.1/utils/cuckoo.service 2>&1 &"
+  bash -c "sudo -u cuckoo /opt/cuckoo3.1/utils/cuckoo.service 2>&1 &"
   echo $! > /tmp/cuckoo.pid && cat /tmp/cuckoo.pid
 }
 
