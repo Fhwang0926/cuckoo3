@@ -5,8 +5,10 @@
 start() {
   stop
   # nohup bash -c /opt/cuckoo3.1/utils/cuckoo.service
-  bash -c "nohup sudo -u cuckoo /opt/cuckoo3.1/utils/cuckoo.service 2>&1 &"
-  echo $! > /tmp/cuckoo.pid && cat /tmp/cuckoo.pid
+  bash -c "nohup sudo -u cuckoo /opt/cuckoo3.1/utils/cuckoo.service > /var/log/cuckoo/cuckoo.log 2>&1 & echo \$! > /tmp/cuckoo.pid"
+  # echo $! > /tmp/cuckoo.pid && cat /tmp/cuckoo.pid
+  # /opt/cuckoo3.1/venv/bin/cuckoorooter /tmp/cuckoo3-rooter.sock --cwd /home/cuckoo/.cuckoocwd --iptables /sbin/iptables --ip /sbin/ip --openvpn /usr/sbin/openvpn --group cuckoo --debug
+  cat /tmp/cuckoo.pid
 }
 
 stop() {
@@ -31,6 +33,7 @@ stop() {
       echo "removed socket"
     fi
   fi
+  pkill -f '/opt/cuckoo3/venv/bin/python3'
 }
 
 status() {
