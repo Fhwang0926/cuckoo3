@@ -15,6 +15,7 @@ stop() {
       echo "Cuckoo-rooter is already running with pid : $(cat /tmp/cuckoo-rooter.pid)"
       echo "stopping cuckoo-rooter"
       /usr/bin/kill -9 $(cat /tmp/cuckoo-rooter.pid)
+      rm -rf /tmp/cuckoo3-rooter.sock
       echo "stopped..."
       sleep 5
       echo "removed socket"
@@ -23,6 +24,7 @@ stop() {
       echo "PID file exists but Cuckoo-rooter is not running. Cleaning up..."
       rm /tmp/cuckoo-rooter.pid
       echo "removed socket"
+      rm -rf /tmp/cuckoo3-rooter.sock
     fi
   fi
   pkill -f '/opt/cuckoo3.1/venv/bin/cuckoorooter'
