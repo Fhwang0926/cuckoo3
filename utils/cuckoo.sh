@@ -4,12 +4,12 @@
 
 start() {
   stop
-  sudo -u cuckoo nohup /opt/cuckoo3/utils/cuckoo.service 2>&1 &
+  nohup bash /opt/cuckoo3.1/utils/cuckoo.service 2>&1 &
   echo $! > /tmp/cuckoo.pid && cat /tmp/cuckoo.pid
 }
 
 stop() {
-  cd /opt/cuckoo3
+  cd /opt/cuckoo3.1
   # PID 파일 존재 여부 및 프로세스 실행 상태 확인
   if [ -f /tmp/cuckoo.pid ]; then
     if ps -p $(cat /tmp/cuckoo.pid) > /dev/null; then

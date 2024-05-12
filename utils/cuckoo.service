@@ -4,4 +4,4 @@
 cd /opt/cuckoo3
 source /opt/cuckoo3/venv/bin/activate
 # nohup cuckoo 2>&1 &
-cuckoo
+sudo -u cuckoo cuckoo
